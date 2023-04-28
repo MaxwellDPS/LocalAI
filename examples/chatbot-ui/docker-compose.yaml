@@ -3,6 +3,7 @@ version: '3.6'
 services:
   api:
     image: quay.io/go-skynet/local-ai:latest
+    #image: quay.io/go-skynet/local-ai:v1.3.2
     build:
       context: ../../
       dockerfile: Dockerfile
@@ -11,6 +12,7 @@ services:
     environment:
       - DEBUG=true
       - MODELS_PATH=/models
+      - THREADS=14
     volumes:
       - ./models:/models:cached
     command: ["/usr/bin/local-ai" ]
